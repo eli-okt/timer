@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-var countDownDate = new Date("Oct 20, 2022 19:00:00").getTime();
+var countDownDate = new Date("Oct 11, 2022 9:24:30").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -17,12 +17,23 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  // document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  // + minutes + "m " + seconds + "s ";
+
+  // Equalize list elements with calculated values for them
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+
     
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+  // When countdown is finished, proceed to the next 24 h 
+  // TODO: Fix:
+  // This momentarily displays -1d -1h ... and then moves on
+  if (distance <= 0) {
+    // clearInterval(x);
+    // document.getElementById("demo").innerHTML = "EXPIRED";
+    
+    countDownDate += (24 * 60 * 60 * 1000);
   }
 }, 1000);
